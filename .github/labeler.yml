@@ -6,3 +6,6 @@ tp:
 
 devoir:
   - docs/devoir/**/*
+
+workflow:
+  - .github/**

@@ -1,0 +1,8 @@
+cours:
+  - docs/cours/**/*
+
+tp:
+  - docs/tp/**/*
+
+devoir:
+  - docs/devoir/**/*

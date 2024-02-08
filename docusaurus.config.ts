@@ -39,7 +39,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/UPB-FILS-alf/upb-fils-alf.github.io',
+            'https://github.com/UPB-FILS-alf/upb-fils-alf.github.io/edit/main',
         },
         // blog: {
         //   showReadingTime: true,

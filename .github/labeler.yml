@@ -8,4 +8,11 @@ devoir:
   - docs/devoir/**/*
 
 workflow:
-  - .github/**
+  - .github/**/*
+
+website:
+  - src/**/*
+  - static/**/*
+  - ./*.js
+  - ./*.json
+  - ./*.ts

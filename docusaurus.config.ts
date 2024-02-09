@@ -67,6 +67,7 @@ const config: Config = {
       items: [
         {to: '/docs/category/cours', label: 'Cours', position: 'left'},
         {to: '/docs/category/tp', label: 'TP', position: 'left'},
+        {to: '/docs/category/devoir', label: 'Devoir', position: 'left'},
         {
           href: 'https://github.com/UPB-FILS-alf/upb-fils-alf.github.io',
           label: 'GitHub',
@@ -87,6 +88,10 @@ const config: Config = {
             {
               label: 'TP',
               to: '/docs/category/tp',
+            },
+            {
+              label: 'Devoir',
+              to: '/docs/category/devoir',
             },
           ],
         },

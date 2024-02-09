@@ -32,8 +32,8 @@ export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+    title={`Bienvenue à ${siteConfig.title}`}
+    description="Le site du cours Automates, Languages Formels et Compilateurs de la Faculté d'Ingénierie des Langues Étrangères de l'UNSTPB.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Automates, Languages Formels et Compilateurs',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Construisons un langage de programmation',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -81,7 +81,7 @@ const config: Config = {
           title: 'Matériaux',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Cours',
               to: '/docs/category/cours',
             },
             {

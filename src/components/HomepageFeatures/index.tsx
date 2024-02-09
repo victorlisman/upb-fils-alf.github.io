@@ -10,32 +10,33 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Langage de programmation',
+    Svg: require('@site/static/img/language_logo.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Ce cours vous aidera à en apprendre davantage sur le fonctionnement des langages de programmation.
+
+        Concevez et écrivez votre propre langage de programmation et votre propre compilateur.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'WebAssembly',
+    Svg: require('@site/static/img/wasm_logo.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Écrivez un compilateur pour votre langage de programmation afin de générer du code 
+        pour WebAssembly (WASM), le nouveau bytecode standard de VM utilisé 
+        dans chaque navigateur et exécuteur d'application portable.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Powered by Kotlin',
+    Svg: require('@site/static/img/kotlin_logo.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Utilisez vos compétences Java et apprenez Kotlin, l'un des langages de programmation les plus utilisés.
       </>
     ),
   },

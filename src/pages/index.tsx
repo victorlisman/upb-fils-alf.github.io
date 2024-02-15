@@ -33,7 +33,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
     title={`Bienvenue à ${siteConfig.title}`}
-    description="Le site du cours Automates, Languages Formels et Compilateurs de la Faculté d'Ingénierie des Langues Étrangères de l'UNSTPB.">
+    description="Le site du cours Automates, Langages Formels et Compilateurs de la Faculté d'Ingénierie des Langues Étrangères de l'UNSTPB.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

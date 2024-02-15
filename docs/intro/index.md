@@ -23,7 +23,7 @@ Comme devoir, vous construirez votre propre petit compilateur de langage qui gé
 
 Professeur de cours \
 GitHub: [alexandruradovici](https://github.com/alexandruradovici) \
-Email: alexandru.radovici@upb.ro
+alexandru.radovici@upb.ro
 </td>
 
 <td>
@@ -32,7 +32,7 @@ Email: alexandru.radovici@upb.ro
  
 Professeur de TP \
 GitHub: [mihaicostin34](https://github.com/mihaicostin34) \
-Email: mihai.costin@wyliodrin.com
+mihai.costin@wyliodrin.com
 </td>
 
 <td>
@@ -41,7 +41,7 @@ Email: mihai.costin@wyliodrin.com
 
 Responsable des devoirs \
 GitHub: [CAmi307](https://github.com/CAmi307) \
-Email: amalia.simion@wyliodrin.com
+amalia.simion@wyliodrin.com
 </td>
 </tr>
 </table>

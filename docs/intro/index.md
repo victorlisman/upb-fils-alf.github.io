@@ -38,13 +38,13 @@ Email: amalia.simion@wyliodrin.com
 
 ## Horaire
 
-| Goupe | Jour | Heure | Salle |
-|-------|------|-------|-------|
-| Cours | Jeudi | 10 - 12 | PR002 |
-| 1220A 2/2 | Mardi | 8 - 10 | EG 306 |
-| 1220A 1/2 | Mardi | 10 - 12 | EG 306 |
-| 1220B 2/2 | Mardi | 8 - 10 | EG 306 |
-| 1220B 1/2 | Mardi | 10 - 12 | EG 306 |
+| Activité | Goupe | Jour | Heure | Salle |
+|----------|-------|------|-------|-------|
+| Cours | *tous les étudiants* | Jeudi | 10 - 12 | PR002 |
+| TP | 1220A sous-groupe 2 | Mardi | 8 - 10 | EG 306 |
+| TP | 1220A sous-groupe 1 | Mardi | 10 - 12 | EG 306 |
+| TP | 1220B sous-groupe 2 | Mardi | 8 - 10 | EG 306 |
+| TP | 1220B sous-groupe 1 | Mardi | 10 - 12 | EG 306 |
 
 ## Système de notation
 

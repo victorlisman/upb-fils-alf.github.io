@@ -32,7 +32,7 @@ Email: mihai.costin@wyliodrin.com
 ### Amalia Simion
 ![Amalia Simion](images/amalia_simion.jpg)
 
-Devoir \
+Responsable des devoirs \
 GitHub: [CAmi307](https://github.com/CAmi307) \
 Email: amalia.simion@wyliodrin.com
 

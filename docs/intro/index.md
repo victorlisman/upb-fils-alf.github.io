@@ -9,7 +9,7 @@ Bienvenue dans le cours *Automates, Languages Formels et Compilateurs*.
 
 Tout au long du cours, vous apprendrez comment fonctionnent les processeurs informatiques, les langages de programmation et comment les compilateurs transforment un langage de haut niveau en code lisible par machine.
 
-Au laboratoire, vous implémenterez des lexers, des analyseurs et des générateurs de code dans Rust.
+Au laboratoire, vous implémenterez des lexers, des analyseurs et des générateurs de code dans Kotlin.
 
 Comme devoir, vous construirez votre propre petit compilateur de langage qui génère du code [WebAssembly](https://webassembly.org/) (*WASM*).
 

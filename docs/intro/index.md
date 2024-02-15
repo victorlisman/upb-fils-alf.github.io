@@ -15,26 +15,36 @@ Comme devoir, vous construirez votre propre petit compilateur de langage qui gé
 
 ## Équipe
 
-### Alexandru Radovici
+<table>
+<tr valign="top">
+<td>
+**Alexandru Radovici**
 ![Alexandru Radovici](images/alexandru_radovici.jpg)
 
 Professeur de cours \
 GitHub: [alexandruradovici](https://github.com/alexandruradovici) \
 Email: alexandru.radovici@upb.ro
+</td>
 
-### Mihai Costin
+<td>
+**Mihai Costin**
 ![Mihai Costin](images/mihai_costin.jpg)
  
 Professeur de TP \
 GitHub: [mihaicostin34](https://github.com/mihaicostin34) \
 Email: mihai.costin@wyliodrin.com
+</td>
 
-### Amalia Simion
+<td>
+**Amalia Simion**
 ![Amalia Simion](images/amalia_simion.jpg)
 
 Responsable des devoirs \
 GitHub: [CAmi307](https://github.com/CAmi307) \
 Email: amalia.simion@wyliodrin.com
+</td>
+</tr>
+</table>
 
 ## Horaire
 

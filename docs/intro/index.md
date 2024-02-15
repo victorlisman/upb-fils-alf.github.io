@@ -7,7 +7,7 @@ slug: /intro
 
 Bienvenue dans le cours *Automates, Langages Formels et Compilateurs*.
 
-Tout au long du cours, vous apprendrez comment fonctionnent les processeurs informatiques, les langages de programmation et comment les compilateurs transforment un langage de haut niveau en code lisible par machine.
+Tout au long du cours, vous apprenez comment fonctionnent les processeurs informatiques, les langages de programmation et comment les compilateurs transforment un langage de haut niveau en code lisible par machine.
 
 Au laboratoire, vous implémenterez des lexers, des analyseurs et des générateurs de code dans Kotlin.
 
@@ -50,8 +50,8 @@ Email: amalia.simion@wyliodrin.com
 
 | Partie | Description | Points |
 |--------|-------------|--------|
-| Tests de cours | Vous passerez un test au début de chaque cours avec des questions du cours précédent. | 2p |
-| Tests de TP | Vous passerez un test au début de chaque laboratoire avec des questions du laboratoire précédent. | 3p |
+| Tests de cours | Vous passerez un test au début de chaque cours avec des questions sue le cours précédent. | 2p |
+| Tests de TP | Vous passerez un test au début de chaque laboratoire avec des questions sur le TP précédent. | 3p |
 | Devoirs | Vous aurez 4 devoirs. | 8p |
 | Examen | L'examen au dernier cours. | 2p |
 | **Total** | *Vous avez besoin de 4,5 points pour réussir le cours.* | **15p** |

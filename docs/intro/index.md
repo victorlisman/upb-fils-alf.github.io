@@ -5,7 +5,7 @@ slug: /intro
 
 # Bienvenue
 
-Bienvenue dans le cours *Automates, Languages Formels et Compilateurs*.
+Bienvenue dans le cours *Automates, Langages Formels et Compilateurs*.
 
 Tout au long du cours, vous apprendrez comment fonctionnent les processeurs informatiques, les langages de programmation et comment les compilateurs transforment un langage de haut niveau en code lisible par machine.
 

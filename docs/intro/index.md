@@ -41,7 +41,7 @@ mihai.costin@stud.fils.upb.ro
 
 Responsable des devoirs \
 GitHub: [CAmi307](https://github.com/CAmi307) \
-amalia.simion@wyliodrin.com
+amalia.simion@stud.fils.upb.ro
 </td>
 </tr>
 </table>

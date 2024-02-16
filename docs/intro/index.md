@@ -32,7 +32,7 @@ alexandru.radovici@upb.ro
  
 Professeur de TP \
 GitHub: [mihaicostin34](https://github.com/mihaicostin34) \
-mihai.costin@wyliodrin.com
+mihai.costin@stud.fils.upb.ro
 </td>
 
 <td>

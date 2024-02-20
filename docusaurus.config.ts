@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Automates, Languages Formels et Compilateurs',
+  title: 'Automates, Langages Formels et Compilateurs',
   tagline: 'Construisez votre langage de programmation',
   favicon: 'img/favicon.ico',
 
@@ -59,9 +59,9 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Automates, Languages Formels et Compilateurs',
+      title: 'Automates, Langages Formels et Compilateurs',
       logo: {
-        alt: 'Automates, Languages Formels et Compilateurs',
+        alt: 'Automates, Langages Formels et Compilateurs',
         src: 'img/logo.svg',
       },
       items: [

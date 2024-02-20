@@ -11,7 +11,7 @@ Tout au long du cours, vous apprenez comment fonctionnent les processeurs inform
 
 Au laboratoire, vous implémenterez des lexers, des analyseurs et des générateurs de code dans Kotlin.
 
-Comme devoir, vous construirez votre propre petit compilateur de langage qui génère du code [WebAssembly](https://webassembly.org/) (*WASM*).
+Comme devoir, vous construiriez votre propre petit compilateur de langage qui génère du code [WebAssembly](https://webassembly.org/) (*WASM*).
 
 ## Équipe
 

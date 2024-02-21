@@ -81,9 +81,9 @@ amalia.simion@stud.fils.upb.ro
 ## Bibliographie
 
 
-1. **Keith Cooper, Linda Torczon**, *Engineering a Compiler*, [pdf](https://drive.google.com/file/d/1ilNMpgmU9T-PG_TWdxVCpMli8fx4aj8-/view?usp=sharing)
-2. **Terence Parr**, *The Definitive ANTLR 4 Reference*, 2nd Edition, [pdf](https://drive.google.com/file/d/1Z5oxftsUwobThwoxEt0rqcb6oDFIz0fX/view?usp=sharing)
-3. **Rick Battagline**, *The Art of WebAssembly, Build Secure, Portable, High-Performance Applications*, [epub](https://drive.google.com/file/d/19PxlgYU-oRl1HF-TJ6fToDlUknCENire/view?usp=sharing), [pdf](https://drive.google.com/file/d/1R_xR5koNC3_7OyoSmiTF0o_ipUqhWqdP/view?usp=sharing)
+1. **Keith Cooper, Linda Torczon**, *Engineering a Compiler*
+2. **Terence Parr**, *The Definitive ANTLR 4 Reference*, 2nd Edition
+3. **Rick Battagline**, *The Art of WebAssembly, Build Secure, Portable, High-Performance Applications*
 4. **Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullman**, *Compilers: Principles, Techniques, and Tools (2nd Edition)*
 5. **John E. Hopcroft, Rajeev Motwani, Jeffrey D. Ullman**, *Introduction to Automata Theory, Languages, and Computation, 3rd Edition*
 6. **Andrew Tanenbaum**, *Modern Operating Systems (4th Edition)*

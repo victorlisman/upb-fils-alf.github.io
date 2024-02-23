@@ -1,9 +1,10 @@
 ---
 sidebar_position: 4
+slug: /tp04
+description: Description avancée de modèles
 ---
 
 # 04 - Expressions régulières
-#### Description avancée de modèles
 
 ## Introduction
 Le TP précédent, on a étudié les automats finis, un moyen d’identifier certaines sous-chaînes dans un texte. Le problème d’AFDs a été la manière lourde dans laquelle il faudrait les implanter. Aujourd’hui, on va apprendre un autre moyen plus déclaratif de décrire les sous-chaînes cherchées: **les expressions régulières** (ou **RegEx**). Plus concretèment, on va voir comment utiliser les RegEx pour décrire facilement des modèles complexes, pour lesquels les chaînes de caractères ne suffisent pas. 
@@ -12,26 +13,34 @@ Dans un compilateur, on utilise les RegEx dans le processus de reconaissance de 
 
 ## Opérateurs et construction de RegEx
 Dans la construction des RegEx on utilise des opérateurs aussi que des caractères.
+
+
+### Opérateurs mathématiques
 |Expréssion|Correspond à|Exemple|
 |:--------:|-----------|:------:|
-|c|Le caractère 'c'.| a|
-|\c|Le caractère lui-même (on utilise cet opérateur quand on veut avoir des caractères qui d’habitude sont des opérateurs).| \\* |
-|"s"|La chaîne s.| "abcca"|
+|a|Le caractère 'a'.| a|
+|"abcca"|La chaîne "abcca".| "abcca"|
 |.|Remplace tout caractère que la ligne nouvelle (`newline`).| a.b|
 |^|Commencement de la ligne. | ^abc|
 |$|Fin de la ligne. | abc$|
 |\[s\]|L’un des caractères de la chaîne "s".| \[abc\] |
 |\[^s\]|Tout caractère qui ne se trouve pas dans la chaîne "s".| \[^abc\] |
+|()| Groupe. | (a\|b)a| 
+| [a-z] |Intervalle. | [0-9]|
+
+### Extensions en Kotlin
+|Expréssion|Correspond à|Exemple|
+|:--------:|-----------|:------:|
+|r1 \| r2 | r1 ou r2.| a \| b |
+|r1(?=r2)| r1 quand il est suivi par r2.| abc(?=123) | 
+|\\w| Alphanumérique et _ .| \\w |
 |r*|Zéro ou plusieures occurences de la chaîne r.| a*|
 |r+|Une ou plusieures occurences de la chaîne r.| a+|
 |r?|Zéro ou une occurence de la chaîne r.| a+|
 |r\{m, n\}| Entre m et n occurences de r.| a{3, 7}|
-|r1r2| La chaîne r1 suivi par r2.| ab |
-|r1 \| r2 | r1 ou r2.| a \| b |
-|r1(?=r2)| r1 quand il est suivi par r2.| abc(?=123) | 
-|\\w| Alphanumérique et _ .| \\w |
-|()| Groupe. | (a\|b)a| 
-| a-z |Intervalle. | 0-9|
+
+
+Si on a besoin d’utiliser dans un RegEx la valeur d’caractère qui est aussi un opérateur (\*, \?, \^), il faut ajouter un "\\" devant lui: "\\*", "\\?", "\\^".
 
 ### Exemples
 - Un RegEx qui reconnaît les chaînes "aaba", "aaca", "baba": `(a|b)a(b|c)a`.
@@ -82,10 +91,27 @@ La classe expose beaucoup de méthodes et on vous encourage de jetter un coup d�
 2. Pour chacun des RegEx suivants, donnez 3 exemples de chaînes qui correspondent:
    - (($\epsilon$\|a)b*)*
    - a\*ba\*ba\*ba\*
+  
+    Vérifiez la correspondance avec ce [site](https://regex101.com/).
 3. Écrivez des expressions régulières pour reconnaître:
    - l’ensemble des chaînes sur l’alphabet $\Set{a, b, c}$ qui contiennent au moins un 'a' et au moins un 'b'
-   - l’ensemble des chaînes sur l’alphabet $\Set{0, 1}$ qui contiennent une seule paire de '1's consécutives   
-4. (Bonus) Ouvrez les fichiers de laboratoire. Regardez le fichier TP04/Ex2.txt. Vous avez un fichier texte qui contient des lignes avec des chiffres et des caractères comme les lignes suivantes: 
+   - l’ensemble des chaînes sur l’alphabet $\Set{0, 1}$ qui contiennent une seule paire de '1's consécutives
+4. Ouvrez les fichiers de laboratoire. Regardez le fichier TP04/Ex4/etc/passwd. C’est un fichier texte qui a le format du fichier etc/passwd dans Linux. Chaque ligne a le format suivant:   
+![Format du fichier etc/passwd](images/04_etcpasswd_contents.png)
+    1. `Username`: le nom d’utilisateur. Contient entre 1 et 32 caractères
+    2. `Password`: un caractère 'x' qui indique que le mot de passe est encodé et situé dans le fichier `/etc/shadow_file`
+    3. `User ID`: identificateur d’utilisateur (un nombre sur 16 bits)
+    4. `Group ID`: identificateur du group (toujours un nombre sur 16 bits)
+    5. `User info`: un champ pour des commentaires
+    6. `Home directory`: le chemin absolut du directeur dans lequel l’utilisateur se trouve au moment de la connexion
+    7. `Command/shell`: le chemin absolut d’une commande
+   
+    Les champs sont separés avec des `:`. On demande: 
+      - écrivez une expression régulière qui accepte toutes les lignes du fichier;
+      - completez le code du fichier TP04/Ex4/Passwd.kt pour écrire un programme qui trouve toutes les commandes disponibles pour un nom d’utilisateur donné
+
+
+5. (Bonus) Ouvrez les fichiers de laboratoire. Regardez le fichier TP04/Ex2.txt. Vous avez un fichier texte qui contient des lignes avec des chiffres et des caractères comme les lignes suivantes: 
 
 ```
     two1nine
@@ -101,4 +127,6 @@ La classe expose beaucoup de méthodes et on vous encourage de jetter un coup d�
 - *Introduction to Automata Theory, Languages and Computation - 3rd edition*- Chapitre 3: Regular Expressions
 - *Compilers: Principles, Techniques & Tools - 2nd Edition* - Chapitre 3.3: Specification of Tokens 
 - [RegEx en Kotlin](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/)
+- [Regex101](https://regex101.com/)
+- [Introduction à RegEx](https://regexone.com/lesson/introduction_abcs)
 

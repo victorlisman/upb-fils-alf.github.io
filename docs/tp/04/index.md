@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-slug: /tp04
+slug: /tp/04
 description: Description avancée de modèles
 ---
 
@@ -20,13 +20,15 @@ Dans la construction des RegEx on utilise des opérateurs aussi que des caractè
 |:--------:|-----------|:------:|
 |a|Le caractère 'a'.| a|
 |"abcca"|La chaîne "abcca".| "abcca"|
-|.|Remplace tout caractère que la ligne nouvelle (`newline`).| a.b|
-|^|Commencement de la ligne. | ^abc|
-|$|Fin de la ligne. | abc$|
-|\[s\]|L’un des caractères de la chaîne "s".| \[abc\] |
-|\[^s\]|Tout caractère qui ne se trouve pas dans la chaîne "s".| \[^abc\] |
-|()| Groupe. | (a\|b)a| 
-| [a-z] |Intervalle. | [0-9]|
+|.|Remplace tout caractère.| a.b|
+|^|Commencement du texte. | ^abc|
+|$|Fin du texte. | abc$|
+|\[abc...\]|L’un des caractères de l'ensemble $\Set{a, b, c, ...}$.| \[abc\] |
+|\[^abc...\]|Tout caractère qui ne se trouve pas dans l'ensemble $\Set{a, b, c, ...}$.| \[^abc\] |
+|()| Groupe. On utilise le groupe quand on veut appliquer un opérateur sur une expréssion (comme les parathèses en mathématiques).| (a\|b)*a| 
+| [0-9] |Intervalle- corréspond à tout caractère entre les deux bornes (inclusivement). | [0-9]|
+
+La plupart de langages de programmation offre du support pour les expressions régulières, mais les opérateurs qu’ils utilisent peuvent varier de l'un à l’autre.
 
 ### Extensions en Kotlin
 |Expréssion|Correspond à|Exemple|
@@ -38,9 +40,11 @@ Dans la construction des RegEx on utilise des opérateurs aussi que des caractè
 |r+|Une ou plusieures occurences de la chaîne r.| a+|
 |r?|Zéro ou une occurence de la chaîne r.| a+|
 |r\{m, n\}| Entre m et n occurences de r.| a{3, 7}|
+|.| Remplace tout caractère **que la ligne nouvelle (`newline`)**.| a.b|
 
-
+:::tip
 Si on a besoin d’utiliser dans un RegEx la valeur d’caractère qui est aussi un opérateur (\*, \?, \^), il faut ajouter un "\\" devant lui: "\\*", "\\?", "\\^".
+:::
 
 ### Exemples
 - Un RegEx qui reconnaît les chaînes "aaba", "aaca", "baba": `(a|b)a(b|c)a`.
@@ -123,10 +127,10 @@ La classe expose beaucoup de méthodes et on vous encourage de jetter un coup d�
 
  Parfois, ces caractères peuvent écrire des chiffres eux-mêmes (par exemple: pour la première ligne, on a `two` et `nine`). Sachant cela, trouvez la première et la dernière chiffre dans chaque ligne et calculez la somme de toutes cettes chiffres. 
 
-## Sources
-- *Introduction to Automata Theory, Languages and Computation - 3rd edition*- Chapitre 3: Regular Expressions
-- *Compilers: Principles, Techniques & Tools - 2nd Edition* - Chapitre 3.3: Specification of Tokens 
-- [RegEx en Kotlin](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/)
-- [Regex101](https://regex101.com/)
-- [Introduction à RegEx](https://regexone.com/lesson/introduction_abcs)
+## Bibliographie
+1. *Introduction to Automata Theory, Languages and Computation - 3rd edition*- Chapitre 3: Regular Expressions
+2. *Compilers: Principles, Techniques & Tools - 2nd Edition* - Chapitre 3.3: Specification of Tokens 
+3. [RegEx en Kotlin](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/)
+4. [Regex101](https://regex101.com/)
+5. [Introduction à RegEx](https://regexone.com/lesson/introduction_abcs)
 

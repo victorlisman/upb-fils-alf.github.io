@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-slug: /tp03
+slug: /tp/03
 description: Reconaissance des chaînes de caractères
 ---
 

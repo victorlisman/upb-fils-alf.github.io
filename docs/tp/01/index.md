@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-slug: /tp01
+slug: /tp/01
 ---
 
 # 01 - Introduction en Kotlin

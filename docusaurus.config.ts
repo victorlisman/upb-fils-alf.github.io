@@ -75,7 +75,7 @@ const config: Config = {
       title: 'Automates, Langages Formels et Compilateurs',
       logo: {
         alt: 'Automates, Langages Formels et Compilateurs',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {to: '/docs/category/cours', label: 'Cours', position: 'left'},

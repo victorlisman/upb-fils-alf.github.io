@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
-slug: /tp/01
+slug: /tp/00
 ---
 
-# 01 - Introduction en Kotlin
+# 00 - Introduction en Kotlin
 
 ## Pourquoi Kotlin?
 Kotlin est un langage moderne de programmation qui offre beaucoup de mécanismes pour assurer la sécurité du code, aussi qu’une syntaxe facile.
@@ -16,7 +16,7 @@ Pour commencer à apprendre Kotlin, on vous prie de suivre toutes les chapitres 
 ## Développement
 Pendant ce semestre, on va utiliser l’IDE IntelliJ. Pour installer Kotlin, vérifiez le lien dans la séction “Sources”.
 
- Pour créer un nouveau projet en Kotlin, choisissez le langage “Kotlin”:![Nouveau projet en Kotlin](images/01_new_kotlin_project.png)
+ Pour créer un nouveau projet en Kotlin, choisissez le langage “Kotlin”:![Nouveau projet en Kotlin](images/00_new_kotlin_project.png)
 Ensuite, vous pouvez commencer à écrire de code.
 
 ## Exercices

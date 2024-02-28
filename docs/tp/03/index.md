@@ -1,153 +1,136 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 slug: /tp/03
-description: Reconaissance des chaînes de caractères
+description: Description avancée de modèles
 ---
 
-# 03 - Automates Finis
+# 03 - Expressions régulières
 
-## Le problème posé
-Pour un compilateur, au commencement du processus de compilation, tout fichier avec de code est vu comme une chaîne de caractères dans lequel il faut identifier les mots composants et les partager dans des jetons (*tokens*). Pour faire cela, on a besoin d’une méthode pour reconnaître certaines sous-chaînes dans le texte initial. Les automates finis offrent une bonne solution à ce problème.
+## Introduction
+Le TP précédent, on a étudié les automats finis, un moyen d’identifier certaines sous-chaînes dans un texte. Le problème d’AFDs a été la manière lourde dans laquelle il faudrait les implanter. Aujourd’hui, on va apprendre un autre moyen plus déclaratif de décrire les sous-chaînes cherchées: **les expressions régulières** (ou **RegEx**). Plus concretèment, on va voir comment utiliser les RegEx pour décrire facilement des modèles complexes, pour lesquels les chaînes de caractères ne suffisent pas. 
 
-## Définitions
+Dans un compilateur, on utilise les RegEx dans le processus de reconaissance de jétons (tokens), pour partager le code entier dans ses composantes: instructions, définitions et noms des variables ou des fonctions. 
 
-Du point de vue mathématique, on definit les automates finis comme un tuple composé par:
-- un ensemble fini des états $S$;
-- un ensemble fini de symboles $\Sigma$, nommé **l’alphabet d’entrée** (le chaîne vide $\epsilon$ ne fait jamais partie de $\Sigma$);
-- une fonction de transition $f$ qui donne, pour chaque combinaison d’état et symbole d’entrée, l'ensemble des états suivants;
-- un état $s_0$, nommé état initial;
-- un ensemble d’états F, un sous-ensemble de $S$, nommés états finals.
+## Opérateurs et construction de RegEx
+Dans la construction des RegEx on utilise des opérateurs aussi que des caractères.
 
-On utilise les automates finis de la manière suivante: on commence dans l’état initial et on lit le premier caractère de notre chaîne. On applique la fonction de transition pour voir quel est le nouvel état. Ensuite, on prend le deuxième caractère du chaîne avec ce nouvel état et on applique encore une fois la fonction de transition. On continue jusqu’à la fin de la chaîne.
 
-On dit que l’automate **accepte la chaîne** si l’état final appartient à F. L’ensemble des chaînes acceptées par un automate s’appelle **le langage** de cet automate.
+### Opérateurs mathématiques
+|Expréssion|Correspond à|Exemple|
+|:--------:|-----------|:------:|
+|a|Le caractère 'a'.| a|
+|"abcca"|La chaîne "abcca".| "abcca"|
+|.|Remplace tout caractère.| a.b|
+|^|Commencement du texte. | ^abc|
+|$|Fin du texte. | abc$|
+|\[abc...\]|L’un des caractères de l'ensemble $\Set{a, b, c, ...}$.| \[abc\] |
+|\[^abc...\]|Tout caractère qui ne se trouve pas dans l'ensemble $\Set{a, b, c, ...}$.| \[^abc\] |
+|()| Groupe. On utilise le groupe quand on veut appliquer un opérateur sur une expréssion (comme les parathèses en mathématiques).| (a\|b)*a| 
+| [0-9] |Intervalle- corréspond à tout caractère entre les deux bornes (inclusivement). | [0-9]|
 
-Il y a deux genres d’automates finis:
-- **déterministe** (AFD): la fonction de transition n’accepte **jamais** $\epsilon$ comme entrée (on ne peut pas passer d’un état vers un autre sans recevoir un caractère) et la fonction de transition donne **un seul état** pour chaque combinaison d’état et symbole d’entrée (en recevant un caractère, il n'y a qu'une seule transition possible qui détermine l'état suivant);
+La plupart de langages de programmation offre du support pour les expressions régulières, mais les opérateurs qu’ils utilisent peuvent varier de l'un à l’autre.
 
-- **indéterministe** (AFI): la fonction de transition **accepte** $\epsilon$ comme entrée (on peut passer d’un état vers un autre sans recevoir un caractère) et la fonction de transition **peut donner plusieurs ou aucun état** comme résultat (en recevant un caractère, il peut y avoir aucune transition ou plusieurs transitions possibles).
-
-## Représentation graphique
-On peut représenter les automates finis commes des graphes orientés dans lesquels les noeuds sont les états de S et la fonction de transition est marquée par poser les symboles correspondants sur les arêtes (par exemple, la transition de $s_0$ à $s_1$ avec le symbole ’a’ est représentée comme une arête de $s_0$ à $s_1$ avec la valeur ’a’). Cela est parfois plus facile que la définition mathématique.
-
-Exemple de AFD:
-
-![AFD](images/03_dfa.png)
-
-Exemple de AFI:
-
-![AFI](images/03_nfa.png)
-
-:::info
-    L’état initial est indiqué par une fléche et le mot “start”. Les états finals sont indiqués par un cercle double.
-:::
+### Extensions en Kotlin
+|Expréssion|Correspond à|Exemple|
+|:--------:|-----------|:------:|
+|r1 \| r2 | r1 ou r2.| a \| b |
+|r1(?=r2)| r1 quand il est suivi par r2.| abc(?=123) | 
+|\\w| Alphanumérique et _ .| \\w |
+|r*|Zéro ou plusieures occurences de la chaîne r.| a*|
+|r+|Une ou plusieures occurences de la chaîne r.| a+|
+|r?|Zéro ou une occurence de la chaîne r.| a+|
+|r\{m, n\}| Entre m et n occurences de r.| a{3, 7}|
+|.| Remplace tout caractère **que la ligne nouvelle (`newline`)**.| a.b|
 
 :::tip
-    Observez, pour chaque automate fini, ses caractéristiques:
-  - pour AFD, chaque état a seulement deux transitions possibles, correspondant aux symboles de l’alphabet $\Set{a, b}$
-  - pour AFI, on a des transitions avec $\epsilon$ (de $s_0$ à $s_1$ et à $s_3$) et quelques transitions n’existent pas ($s_1$ ou $s_2$ avec ’b’ et $s_3$ et $s_4$ avec ’a’)
+Si on a besoin d’utiliser dans un RegEx la valeur d’caractère qui est aussi un opérateur (\*, \?, \^), il faut ajouter un "\\" devant lui: "\\*", "\\?", "\\^".
 :::
 
-## Implantation
+### Exemples
+- Un RegEx qui reconnaît les chaînes "aaba", "aaca", "baba": `(a|b)a(b|c)a`.
+  
+:::tip[Raisonement]
+    La reconnaîssance des modèles en utilisant les RegEx se passe caractère par caractère: on prend le premier caractère du RegEx (qui, dans notre cas, est l’expression a ou b) et on le compare avec le premier caractère dans chaque chaîne. On peut voir que les trois chaînes commencent avec a ou b, donc, jusq’à ce point, le modèle determiné par le RegEx se trouve dans les trois chaînes. On continue avec le caractère suivant dans l’expression, qui est tout simplement a, et qui se trouve en tant que deuxième caractère toujours dans les trois chaînes. Le processus continue jusqu’à la fin de l’expression régulière.
+:::
 
-Avant de commencer l'implantation elle-même, il faut établir quelques conventions:
-- pour représenter les états d’un automate qui reconnaît un modèle de $m$ caractères, on va utiliser les nombres entiers de 0 à m (inclusivement);
-- pour l’alphabet, on prendra une liste de caractères (dans le sense plus abstrait, l’alphabet peut être n’importe quel type de données, mais pour ce travail pratique, les caractères nous suffisent)
+- Un RegEx qui reconnaît les numéros entièrs: `(-)?[1-9][0-9]*`.
 
-### I. Avec l'instruction `when()`
-La plus simple manière d’implanter un AFD, c’est avec une instruction `when()` qui a une branche pour chaque élément de l’alphabet. Ensuite, dans chacune de cettes branches, il faut vérifier dans quel état on se trouve, toujours avec une instruction `when()`. Pour déterminer l’état prochain, on regarde la fonction de transition correspondante. Après avoir lu un caractère, on vérifie toujours l’état courrant pour vérifier si on est arrivé à l’état final. 
+- Un RegEx qui reconnaît les chaînes qui commencent avec 'a', se terminent avec 'a' et contiennent que 'a' ou 'b' à l’intérieur: `a(a|b)*a`.
 
-Voici un morceau de code qui appartient au AFD donné dans l’image précédente:
+## Regex en Kotlin
+Kotlin, comme d’autres langages de programmation, offre déjà une implantation pour les RegEx: la classe `Regex()`. On peut instantier un objet de type `Regex` soit en utilisant le constructeur de la classe, soit avec la méthode `toRegex()` sur un `String`.
 
-````kotlin
-    //fonction pour trouver les sous-chaînes dans un texte T
-    fun find_pattern(T: String){
-        var q = 0               //l’état initial - comme on a déjà dit, on utilise des nombres entiers
-        for(c: Char in T){      //parcourir le texte donné
-            q = when(c){        //le premier when() est pour l’état courant
-                'a'-> when(q){  //le deuxième pour l’alphabet
-                    0-> 1
-                    1-> 1
-                    /*
-                    Les situations réstantes
-                    */
-                }
-                'b'-> when(q){
-                    /*
-                    Les situations réstantes
-                    */
-                } 
-            }
-            if(q==3){       //l’état final
-                println("On a trouvé la sous-chaîne dans T")
-            }
-        }
-    }
-````
+```kotlin
+    //instantiation avec le constructeur
+    val myRegex = Regex("a(a|b)*a")
 
-### II. À partir d’un modèle
+    //instantiation à partir d’un String
+    val myOtherRegex = "(-)?[1-9][0-9]*".toRegex()
+```
 
-C’est assez facile d’implanter un AFD en sachant son fonction de transition (du coup, elle fait partie de la définition mathématique). Une autre chose qu’on peut faire, c’est d’essayer de déterminer la fonction de transition à partir d’un modèle donné (qui est la sous-chaîne à reconnaître).
+La classe expose beaucoup de méthodes et on vous encourage de jetter un coup d’oeil sur la documentation officielle dans la séction de sources. Parmi les plus importantes, on trouve:
 
+```kotlin
+    //retourne la première correspondance dans input, en chercheant à partir de startIndex
+    fun find(
+        input: CharSequence,
+        startIndex: Int = 0
+    ): MatchResult?
 
-On peut commencer par le constructeur d’une classe pour implanter un automate fini déterministe:
-````kotlin
-class DFA(
-    val pattern: String,         // le modèle à trouver
-    val alphabet: List<Char>,    // l'alphabet 
-    val startState: Int,         // l’état initial
-    val endStates: List<Int>     // les états finals
-) { /* code de la classe */}
-````
+    //la même chose que find, mais retourne une séquence de toutes les correspondances
+    fun findAll(
+        input: CharSequence,
+        startIndex: Int = 0
+    ): Sequence<MatchResult>
 
-On va représenter la fonction de transition par un HashMap qui a comme clés des paires (Int, Char) signifiant l’état courant (Int) et le caractère lu (Char) et des valeurs Int pour l’état résultant.
-
-Pour le pseudo-code d’un automate fini ayant l’état initial $0$, le seul état final $m$ et la fonction de transition $f$ qui doit reconnaître un modèle $P$ de longueur $m$ dans un texte $T$ de longueur $n$:
-````kotlin    
-    fun find_pattern(T, m):
-        val n = T.length
-        var q = 0                           //l’état initial
-        for i=0 to n:                       //parcourir le texte
-            q = f(q, T[i])                  //appliquer la fonction de transition pour obtenir l’état suivant
-            if(q==m):                       //l’état final - pour plusieurs états finals, on fait plusieurs comparaisons
-                print("On a trouvé P dans T")            
-````
-On peut voir que, sachant la fonction de transition, on a seulement besoin de parcourir le texte et de toujours verifier l’état dans lequel on se trouve. Il se pose maintenant le problème suivant : comment déterminer cette fonction de transition? 
-
-Pour un modèle $P$ et un alphabet $S'$, on obtient la fonction de transition $f$:
-
-````kotlin
-    fun compute_transition_function(P, S'): 
-        val m = P.length
-        for q=0 to m:
-            for a in S' :
-                var k = min(m+1, q.index()+2)
-                repeat:
-                    k = k-1                 
-                until P[0..k] is a suffix for (P[0..q] || a)
-                f(q, a) = k
-        return f    
-````
-
-Dans ce code, l’opérateur `||` signifie la concatenation et `P[0..k]` est la sous-chaîne de P à partir de la position 0 jusqu’à la position k (exclusivement).
-
-Prenons un exemple pour mieux comprendre: pour l’AFD donné avant, on a $P="abb"$. Supposons qu’il faut calculer la fonction de transition pour la paire $(0, 'b')$, donc pour $q=0$ et $a='b'$. $k$ sera $2$ au moment de l’initialisation et, ensuite, il devient $1$. La sous-chaîne `P[0..k]` sera  $"a"$ et `P[0..q] || a` sera $"b"$, donc la première n’est pas un suffixe pour la deuxième. On continue et, à l’itération prochaine, on trouvera `P[0..k]` le chaîne vide, donc la condition est toujours vraie. On sort avec $k=0$ et, donc, $f(0, b)=0$, ce qui est vrai. 
+    //partage input autour des occurences du regex
+    fun split(
+        input: CharSequence,
+        limit: Int = 0
+    ): List<String>
+```
 
 ## Exercices
-1. Pour l’AFD et les mots donnés, écrivez les états et les transitions et dites si les mots sont acceptés: 
- - bbabaa
- - aaababb
- - abbbabab
-![Ex_1](images/03_ex1.png)
+1. Completez les exercices sur ce [site](https://regexone.com/lesson/introduction_abcs).
+2. Pour chacun des RegEx suivants, donnez 3 exemples de chaînes qui correspondent:
+   - (($\epsilon$\|a)b*)*
+   - a\*ba\*ba\*ba\*
+  
+    Vérifiez la correspondance avec ce [site](https://regex101.com/).
+3. Écrivez des expressions régulières pour reconnaître:
+   - l’ensemble des chaînes sur l’alphabet $\Set{a, b, c}$ qui contiennent au moins un 'a' et au moins un 'b'
+   - l’ensemble des chaînes sur l’alphabet $\Set{0, 1}$ qui contiennent une seule paire de '1's consécutives
+4. Ouvrez les fichiers de laboratoire. Regardez le fichier TP03/Ex4/etc/passwd. C’est un fichier texte qui a le format du fichier etc/passwd dans Linux. Chaque ligne a le format suivant:   
+![Format du fichier etc/passwd](images/03_etcpasswd_contents.png)
+    1. `Username`: le nom d’utilisateur. Contient entre 1 et 32 caractères
+    2. `Password`: un caractère 'x' qui indique que le mot de passe est encodé et situé dans le fichier `/etc/shadow_file`
+    3. `User ID`: identificateur d’utilisateur (un nombre sur 16 bits)
+    4. `Group ID`: identificateur du group (toujours un nombre sur 16 bits)
+    5. `User info`: un champ pour des commentaires
+    6. `Home directory`: le chemin absolut du directeur dans lequel l’utilisateur se trouve au moment de la connexion
+    7. `Command/shell`: le chemin absolut d’une commande
+   
+    Les champs sont separés avec des `:`. On demande: 
+      - écrivez une expression régulière qui accepte toutes les lignes du fichier;
+      - completez le code du fichier TP03/Ex4/Passwd.kt pour écrire un programme qui trouve toutes les commandes disponibles pour un nom d’utilisateur donné
 
-2. Utilisez ce [site](https://madebyevan.com/fsm/) pour créer les automates finis suivants:
-- un AFI qui accepte les chaînes: 011001, 11110000 et 10010011
-- un AFD qui accepte les chaînes: abbccc, cbaaab et acccbaab
-- un AFD avec l'alphabet {'a', 'b'} le langage duquel est l'ensemble des chaînes avec le nombre de ’a’ multiple de 3
-- un AFD avec l'alphabet {'a', 'b'} le langage duquel est l'ensemble des chaînes avec un nombre paire de 'a' et un nombre impaire de 'b'
 
-3. Ouvrez le fichier `TP3/Ex3.kt` dans les fichiers du TP. Suivez les `TODO` pour completer l’implantation du AFD donné à l’exercice no. 1 en utilisant l'instruction `when()`.
+5. (Bonus) Ouvrez les fichiers de laboratoire. Regardez le fichier TP03/Ex2.txt. Vous avez un fichier texte qui contient des lignes avec des chiffres et des caractères comme les lignes suivantes: 
 
-4. Ouvrez le fichier `TP3/Ex4.kt` dans les fichiers du TP. Remplissez la classe `DFA.kt` dans les fichiers du TP en suivant les `TODO`. Utilisez l'implantation obtenue pour un automate qui cherche le modèle "aabab". Affichez les positions des occurences du modèle dans la chaîne "aaababaabaababaab" 
+```
+    two1nine
+    eightwothree
+    abcone2threexyz
+    xtwone3four
+    4nineeightseven2
+```
 
-5. (Bonus) Implantez en Kotlin le dernier automate de l'exercice no. 2.
+ Parfois, ces caractères peuvent écrire des chiffres eux-mêmes (par exemple: pour la première ligne, on a `two` et `nine`). Sachant cela, trouvez la première et la dernière chiffre dans chaque ligne et calculez la somme de toutes cettes chiffres. 
+
+## Bibliographie
+1. *Introduction to Automata Theory, Languages and Computation - 3rd edition*- Chapitre 3: Regular Expressions
+2. *Compilers: Principles, Techniques & Tools - 2nd Edition* - Chapitre 3.3: Specification of Tokens 
+3. [RegEx en Kotlin](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/)
+4. [Regex101](https://regex101.com/)
+5. [Introduction à RegEx](https://regexone.com/lesson/introduction_abcs)
+
